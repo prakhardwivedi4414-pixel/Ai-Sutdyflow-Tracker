@@ -1,0 +1,179 @@
+:root{
+  --primary:#1A73E8;
+  --accent:#7EE8FA;
+  --surface:#FFFFFF;
+  --bg:#F5FAFF;
+  --text-dark:#0F3D60;
+  --muted:#5a6b82;
+  --card-radius:16px;
+}
+
+/* RESET + global */
+*{box-sizing:border-box;margin:0;padding:0;font-family:Inter,sans-serif}
+body{background:var(--bg);color:var(--text-dark)}
+
+a{text-decoration:none}
+button{cursor:pointer}
+
+/* ========= NAVBAR ========= */
+.fluid-navbar {
+  position: sticky; top: 0; z-index: 999;
+  padding: 14px 36px;
+  display: flex; justify-content: space-between; align-items: center;
+  background: rgba(255,255,255,0.58);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255,255,255,0.45);
+  overflow: hidden;
+}
+
+.fluid-navbar::before {
+  content: "";
+  position: absolute;
+  width: 600px; height: 600px;
+  top: var(--y,50%); left: var(--x,50%);
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle,
+    rgba(126,232,250,0.9),
+    rgba(26,115,232,0.75),
+    rgba(15,61,96,0.35),
+    transparent 70%
+  );
+  filter: blur(70px);
+  pointer-events: none;
+  transition: all .2s ease-out;
+}
+
+.nav-left{display:flex; gap:10px; align-items:center; z-index:3}
+.logo-icon{width:36px}
+.logo-text{
+  font-weight:800;
+  font-size:20px;
+  background:linear-gradient(90deg,var(--primary),var(--accent));
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.nav-links{
+  display:flex;
+  gap:22px;
+  list-style:none;
+  z-index:3;
+}
+
+.nav-links a{
+  color:var(--text-dark);
+  font-weight:600;
+  transition:.2s;
+}
+.nav-links a:hover, .nav-links .active {
+  color:var(--primary);
+}
+
+/* Encapsulated navbar button */
+.fancy-btn{
+  padding:10px 18px;
+  border:none;
+  border-radius:12px;
+  background:rgba(255,255,255,.25);
+  backdrop-filter:blur(10px);
+  color:var(--primary);
+  font-weight:700;
+  box-shadow:0 6px 20px rgba(26,115,232,0.12);
+  transition:.25s;
+}
+.fancy-btn:hover{transform:translateY(-4px)}
+
+/* Remove blue link styling everywhere */
+a {
+  text-decoration: none;
+  color: inherit;     /* No more blue links */
+}
+
+/* Disable blue on hover/focus too */
+a:hover, a:focus, a:visited {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Make entire card clickable */
+.card-link {
+  display: block;
+  cursor: pointer;
+  border-radius: var(--card-radius);
+}
+
+/* Ensure hover effects still apply */
+.card-link .card {
+  transition: transform .25s, box-shadow .25s;
+}
+
+.card-link:hover .card {
+  transform: translateY(-10px);
+  box-shadow: 0 14px 40px rgba(15,61,96,0.18);
+}
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translate(-50%, -50%);
+  
+  background: radial-gradient(
+    circle at var(--fx, 50%) var(--fy, 50%),
+    rgba(80,200,255,0.95),     /* aqua – deeper */
+    rgba(0,110,255,0.85),      /* strong blue */
+    rgba(0,60,130,0.65),       /* deep navy */
+    transparent 80%
+  );
+
+  opacity: 0;
+  filter: blur(55px);
+  transition: opacity .35s ease, transform .35s ease;
+  pointer-events: none;
+}
+/* FLUID-FILL CARD EFFECT (like navbar) */
+.card {
+  position: relative;
+  overflow: hidden;
+  background: #ffffff;
+  border-radius: var(--card-radius);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+/* Fluid background inside card */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translate(-50%, -50%);
+  
+  background: radial-gradient(
+    circle at var(--fx, 50%) var(--fy, 50%),
+    rgba(126,232,250,0.85),
+    rgba(26,115,232,0.75),
+    rgba(15,61,96,0.55),
+    transparent 70%
+  );
+
+  opacity: 0;
+  filter: blur(65px);
+  transition: opacity .35s ease, transform .35s ease;
+  pointer-events: none;
+}
+
+/* Hover lifting + glow */
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px rgba(15,61,96,0.22);
+}
+
+/* When hovered, show fluid fill */
+.card:hover::before {
+  opacity: 0.85;
+  transform: translate(-50%, -50%) scale(1.4);
+}
+
+/* Card content over fluid */
+.card > * {
+  position: relative;
+  z-index: 2;
+}

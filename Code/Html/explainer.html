@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Explainer — StudyFlow</title>
+
+  <link rel="stylesheet" href="/AI-StudyFlow/Code/Design/base.css">
+  <link rel="stylesheet" href="/AI-StudyFlow/Code/Design/explainer.css">
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="fluid-navbar">
+    <div class="nav-left">
+      <img src="https://cdn-icons-png.flaticon.com/512/906/906361.png" alt="not found" class="logo-icon">
+      <h2 class="logo-text">AI StudyFlow</h2>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="planner.html">Planner</a></li>
+      <li><a href="explainer.html" class="active">Explainer</a></li>
+      <li><a href="mood.html">Mood Coach</a></li>
+    </ul>
+
+    <button class="nav-btn fancy-btn">Start</button>
+  </nav>
+
+  <!-- CONTENT -->
+  <main class="explainer-wrapper">
+
+    <h1 class="exp-title">AI Note Explainer</h1>
+    <p class="exp-subtitle">Paste your notes or upload a file — AI will simplify, explain, and highlight key concepts.</p>
+
+    <!-- Input Section -->
+    <div class="input-card card">
+      <textarea id="note-input" placeholder="Paste your notes here..."></textarea>
+
+      <div class="action-grid">
+        <button class="action-btn" onclick="runExplain('explain')">Explain</button>
+        <button class="action-btn" onclick="runExplain('simplify')">Simplify</button>
+        <button class="action-btn" onclick="runExplain('summarize')">Summarize</button>
+        <button class="action-btn" onclick="runExplain('questions')">Ask Questions</button>
+        <button class="action-btn" onclick="runExplain('examples')">Give Examples</button>
+      </div>
+    </div>
+
+    <!-- Output -->
+    <div id="output-card" class="output-card card">
+      Your AI output will appear here...
+    </div>
+
+    <!-- History -->
+    <div class="history-card card">
+      <h3>Previous Explanations</h3>
+      <div id="history-list" class="history-list">None yet.</div>
+    </div>
+
+    <!-- Explainer Aura -->
+    <div id="exp-aura" class="exp-aura"></div>
+
+  </main>
+
+  <footer class="footer">© 2025 AI StudyFlow</footer>
+
+  <script src="/AI-StudyFlow/Code/Javascript/moodnavbar.js"></script>
+  <script src="/AI-StudyFlow/Code/Javascript/app.js"></script>
+  <script src="/AI-StudyFlow/Code/Javascript/Explainer.js"></script>
+
+  
+</body>
+</html>

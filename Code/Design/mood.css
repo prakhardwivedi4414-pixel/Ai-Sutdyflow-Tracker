@@ -1,0 +1,276 @@
+.mood-wrapper {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 24px;
+  background: var(--surface);
+  border-radius: 20px;
+  box-shadow: 0 18px 45px rgba(15,61,96,0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.mood-title {
+  text-align: center;
+  font-size: 32px;
+  color: var(--primary);
+  font-weight: 800;
+}
+
+.mood-subtitle {
+  text-align: center;
+  margin-top: 8px;
+  color: var(--muted);
+}
+
+/* MOOD GRID */
+.mood-grid {
+  margin-top: 28px;
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Ripple effect */
+.mood-btn {
+  padding: 14px 24px;
+  border-radius: 14px;
+  background: white;
+  border: none;
+  font-size: 18px;
+  font-weight: 700;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(15,61,96,0.08);
+  transition: .2s;
+}
+.mood-btn:hover { transform: translateY(-6px); }
+
+.mood-btn::after {
+  content: "";
+  position: absolute;
+  width: 0; height: 0;
+  background: rgba(0,0,0,0.08);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  pointer-events: none;
+  transition: width .4s, height .4s, opacity .4s;
+}
+.mood-btn:active::after {
+  width: 180px; height: 180px;
+  opacity: 1;
+}
+
+/* Mood Aura */
+.mood-aura {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  filter: blur(130px);
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+/* Graph Box */
+.graph-box {
+  margin-top: 30px;
+  padding: 20px;
+  border-radius: 16px;
+  background: white;
+  box-shadow: 0 8px 24px rgba(15,61,96,0.06);
+}
+
+.graph-container {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 12px;
+}
+
+.graph-bar {
+  height: 14px;
+  border-radius: 10px;
+  background: #e0eaff;
+  overflow: hidden;
+}
+
+.graph-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--primary));
+  width: 0;
+  transition: width 0.6s ease-out;
+}
+
+/* Mood Output */
+.mood-output {
+  background: white;
+  margin-top: 30px;
+  padding: 24px;
+  font-size: 17px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(15,61,96,0.06);
+  line-height: 1.6;
+}
+
+/* Mood History */
+.history-box {
+  margin-top: 34px;
+  padding: 18px;
+  border-radius: 14px;
+  background: white;
+  box-shadow: 0 10px 30px rgba(15,61,96,0.06);
+}
+
+.history-list {
+  margin-top: 10px;
+  font-size: 26px;
+}
+/* Remove hyperlink appearance everywhere */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Make card-links clickable but invisible as links */
+.card-link {
+  display: block;
+  cursor: pointer;
+}
+
+/* Important: card hover still works correctly */
+.card-link .card {
+  transition: transform .25s, box-shadow .25s;
+}
+
+.card-link .card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 14px 40px rgba(15,61,96,0.18);
+}
+.card-link {
+  border-radius: 16px;
+}
+
+.card-link:hover {
+  text-decoration: none;
+}
+* 🌊 Premium Camera Panel */
+.camera-panel {
+  max-width: 780px;
+  margin: 40px auto;
+  padding: 25px;
+  border-radius: 24px;
+
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(14px);
+  border: 1.5px solid rgba(255, 255, 255, 0.55);
+
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.12);
+  animation: fadeUp 0.7s ease-out;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.camera-header h2 {
+  font-size: 1.9rem;
+  color: #003147;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.camera-header p {
+  margin: 0 0 20px;
+  font-size: 0.95rem;
+  color: #005b7a;
+}
+
+/* Video Container */
+.camera-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  border-radius: 20px;
+
+  background: rgba(255,255,255,0.5);
+  border: 2px solid rgba(255,255,255,0.7);
+}
+
+#webcam, #overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Placeholder if camera not open */
+.camera-overlay-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.75;
+  color: #004d6e;
+  font-weight: 600;
+}
+
+.cam-icon {
+  font-size: 3rem;
+  margin-bottom: 8px;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.4; transform: scale(0.95); }
+  50% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0.4; transform: scale(0.95); }
+}
+
+/* Buttons */
+.camera-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.cam-btn {
+  padding: 12px 30px;
+  border-radius: 14px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.start-btn {
+  background: linear-gradient(135deg, #00b4d8, #0096c7);
+  color: white;
+  box-shadow: 0 5px 22px rgba(0, 150, 199, 0.35);
+}
+
+.start-btn:hover { transform: scale(1.06); }
+
+.stop-btn {
+  background: #ff4d6d;
+  color: white;
+  display: none;
+}
+
+.stop-btn:hover { transform: scale(1.06); }
+
+.camera-status {
+  margin-top: 10px;
+  text-align: center;
+  font-weight: 600;
+  color: #003147;
+}

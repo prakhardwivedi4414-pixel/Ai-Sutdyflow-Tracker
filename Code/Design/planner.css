@@ -1,0 +1,411 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f5f7fb;
+}
+
+.nav {
+    background: white;
+    padding: 1rem;
+    display: flex;
+    gap: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,.1);
+}
+
+.nav a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #333;
+}
+
+.container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 1rem;
+}
+
+.form {
+    display: grid;
+    gap: 1rem;
+}
+
+input, textarea, select {
+    padding: 0.8rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+button {
+    background: royalblue;
+    color: white;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.card-grid {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.card {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    flex: 1;
+    box-shadow: 0 2px 5px rgba(0,0,0,.1);
+    text-align: center;
+}
+
+.big-btn {
+    display: inline-block;
+    margin-top: 1rem;
+    background: royalblue;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+.output-box {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    white-space: pre-wrap;
+    box-shadow: 0 2px 5px rgba(0,0,0,.1);
+}
+
+.deadline-row {
+    display: flex;
+    gap: 10px;
+}
+
+.deadline-row input {
+    flex: 1;
+}
+
+.mini-btn {
+    margin-top: 10px;
+    width: 100%;
+    padding: 0.7rem;
+    background: #2563eb;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.deadline-list {
+    margin-top: 1rem;
+    padding-left: 0;
+    list-style: none;
+}
+
+.deadline-list li {
+    background: white;
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.07);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.remove-btn {
+    background: #ef4444;
+    color: white;
+    border: none;
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* ===== Smooth Attractive Background Gradient ===== */
+body {
+    background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 50%, #f5d0fe 100%);
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+/* ===== Ocean Breeze Gradient Background ===== */
+body {
+    background: linear-gradient(135deg,
+        #E0F2FE 0%,     /* soft sky */
+        #DFF7FF 25%,    /* breeze blue */
+        #A8E6CF 50%,    /* seafoam */
+        #7DD3FC 75%,    /* ocean shimmer */
+        #0EA5E9 100%    /* deep teal */
+    );
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+/* ===== Modern Ocean Breeze Navbar ===== */
+.nav {
+    background: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(10px);
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+.nav a {
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #0E7490;  /* teal blue */
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: 0.2s ease;
+}
+
+.nav a:hover {
+    color: #0284C7;
+    transform: scale(1.05);
+}
+
+
+
+/* ===== Ocean Breeze Buttons ===== */
+button, .add-btn, .generate-btn, .mini-btn {
+    background: linear-gradient(135deg, #7DD3FC, #0EA5E9);
+    border: none;
+    padding: 0.9rem 1.2rem;
+    border-radius: 12px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+    font-size: 1rem;
+    box-shadow: 0 4px 12px rgba(14,165,233,0.25);
+}
+
+button:hover, .add-btn:hover, .generate-btn:hover, .mini-btn:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 18px rgba(14,165,233,0.35);
+}
+
+/* ===== Improved Add Subject Button (Ocean Breeze Style) ===== */
+.add-btn {
+    margin-top: 1.2rem;
+    width: 100%;
+    background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+    padding: 0.9rem;
+    border: none;
+    border-radius: 14px;
+    color: white;
+    font-weight: 600;
+    font-size: 1.05rem;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(14,165,233,0.25);
+    transition: all 0.2s ease;
+}
+
+.add-btn:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 20px rgba(14,165,233,0.35);
+}
+
+/* =================== PREMIUM NAVBAR STYLE =================== */
+.nav {
+  background: rgba(255,255,255,0.45);
+  backdrop-filter: blur(12px);
+  padding: 15px 25px;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  border-radius: 0 0 22px 22px;
+  box-shadow: 0 5px 22px rgba(0,0,0,0.06);
+  margin-bottom: 1.5rem;
+}
+
+/* Attractive gradient text */
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.05rem;
+
+  background: linear-gradient(135deg, #0284c7, #0ea5e9);
+  -webkit-background-clip: text;
+  color: transparent;
+
+  transition: 0.2s ease;
+}
+
+.nav-link:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.2);
+}
+
+/* ICON styling */
+.icon {
+  width: 21px;
+  height: 21px;
+  stroke: #0284c7;
+  transition: 0.2s ease;
+}
+
+.nav-link:hover .icon {
+  stroke: #0ea5e9;
+  transform: scale(1.15);
+}
+
+/* ===== Responsive Ocean Breeze Background ===== */
+body {
+    background: linear-gradient(120deg,
+        #e0f7fa,
+        #b3ecff,
+        #a8e6cf,
+        #7dd3fc,
+        #0ea5e9
+    );
+    background-size: 300% 300%;
+    animation: oceanFlow 12s ease infinite;
+}
+
+/* Smooth moving gradient animation */
+@keyframes oceanFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ===== Bounce + Lift Button Hover Animation ===== */
+button, .add-btn, .generate-btn, .mini-btn {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+button:hover, .add-btn:hover, .generate-btn:hover, .mini-btn:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0px 12px 28px rgba(14,165,233,0.35);
+}
+
+/* Extra soft bounce effect */
+button:active, .add-btn:active, .generate-btn:active, .mini-btn:active {
+    transform: translateY(1px) scale(0.97);
+    transition: 0.1s;
+}
+
+/* ===== Fix Congested Boxes - Add More Space ===== */
+.planner-card,
+.output-box,
+.subject-list li {
+    padding: 1.5rem !important;
+    border-radius: 18px;
+}
+
+/* Extra spacing between sections */
+.planner-card,
+.section-title,
+.output-section {
+    margin-bottom: 1.8rem !important;
+}
+
+.deadline-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+}
+
+input {
+    padding: 0.85rem 1rem !important;
+    border-radius: 12px !important;
+    font-size: 1rem;
+}
+.subject-list li {
+    margin-bottom: 1rem !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.output-box {
+    padding: 1.8rem !important;
+    line-height: 1.6rem !important;
+    font-size: 1.05rem;
+}
+
+/* ===== FIX: Hours input touching border & spacing improvements ===== */
+
+/* Add clean padding inside the card */
+.planner-card {
+    padding: 2rem 2rem !important;
+    border-radius: 18px;
+}
+
+/* Spacing for section titles */
+.section-label, .section-title {
+    margin-bottom: 0.9rem !important;
+    margin-top: 1.2rem !important;
+}
+
+/* Fix Space Above & Below Hours Input */
+#hours {
+    margin-top: 1rem !important;
+    margin-bottom: 1.4rem !important;
+
+    padding: 0.85rem 1rem !important;
+    border-radius: 12px !important;
+    border: 1px solid #d1d5db !important;
+
+    font-size: 1rem !important;
+    width: 100%;
+}
+
+/* Add space below inputs in first section */
+.deadline-row {
+    margin-bottom: 1.3rem !important;
+}
+
+/* Fix right-side spacing of Hours input */
+#hours {
+    width: calc(100% - 10px) !important;   /* reduces width slightly */
+    margin-right: 1px !important;          /* adds gap from right border */
+    padding-right: 1px !important;        /* adds inner spacing on right */
+}
+
+/* ===== Fix Alignment of All Inputs & Buttons Inside the Card ===== */
+
+/* Make everything inside planner-card have same left/right spacing */
+.planner-card > * {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+}
+
+/* Fix Hours input specifically */
+#hours {
+    width: 100% !important;                 /* same width as other inputs */
+    box-sizing: border-box !important;      /* prevents overflow */
+    margin: 0 !important;                   /* aligns left/right perfectly */
+}
+
+/* Fix Add Subject button alignment */
+.add-btn,
+.generate-btn {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+}
+
+/* Fix Subject + Date row alignment */
+.deadline-row input {
+    width: 100% !important;
+    box-sizing: border-box !important;
+}

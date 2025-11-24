@@ -1,0 +1,7 @@
+POST http://localhost:5000/api/plan
+Content-Type: application/json
+
+{
+  "subjects": ["maths", "python"],
+  "hours": 3
+}

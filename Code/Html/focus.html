@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Focus Hub & Ambient Flow — StudyFlow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../Design/base.css">
+  <link rel="stylesheet" href="../Design/focus.css">
+</head>
+
+<body>
+  <!-- UNIFIED NAVBAR -->
+  <nav class="fluid-navbar">
+    <div class="nav-left">
+      <span class="logo-badge">⚡</span>
+      <h2 class="logo-text">AI StudyFlow</h2>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Dashboard</a></li>
+      <li><a href="planner.html">Planner</a></li>
+      <li><a href="explainer.html">Notes & Cornell</a></li>
+      <li><a href="flashcards.html">Flashcards</a></li>
+      <li><a href="quiz.html">Mock Exam</a></li>
+      <li><a href="focus.html" class="active">Focus Hub</a></li>
+    </ul>
+
+    <div class="nav-right-group">
+      <span id="streak-pill" class="streak-pill">🔥 1 Day Streak</span>
+      <button class="nav-btn fancy-btn" onclick="location.href='planner.html'">Planner 📅</button>
+    </div>
+  </nav>
+
+  <!-- CONTENT -->
+  <main class="focus-wrapper">
+    <div class="header-section">
+      <div class="header-badge">🎧 Deep Work & Cognitive State</div>
+      <h1 class="page-title">Focus Hub & Ambient Flow</h1>
+      <p class="page-subtitle">Enter distraction-free flow with customizable Pomodoro rhythms and procedural ambient focus sounds generated directly in your browser.</p>
+    </div>
+
+    <div class="focus-layout-grid">
+      <!-- LEFT COLUMN: FOCUS TIMER -->
+      <div class="focus-card card">
+        <div class="timer-mode-selector">
+          <button type="button" class="mode-pill active" onclick="setTimerMode(25, 5, 'Classic Pomodoro')">🍅 Pomodoro 25m</button>
+          <button type="button" class="mode-pill" onclick="setTimerMode(50, 10, 'Deep Work Flow')">🚀 Deep Flow 50m</button>
+          <button type="button" class="mode-pill" onclick="setTimerMode(15, 3, 'Rapid Burst')">⚡ Quick 15m</button>
+        </div>
+
+        <div class="timer-display-stage">
+          <div id="timer-state-label" class="timer-state-tag">FOCUS SESSION</div>
+          <div id="focus-clock" class="digital-clock">25:00</div>
+          <div class="progress-bar-container" style="max-width: 320px; margin: auto;">
+            <div class="progress-track">
+              <div id="timer-progress-fill" class="progress-fill" style="width: 0%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timer-actions">
+          <button id="toggle-focus-btn" type="button" class="primary-focus-btn">▶️ Start Focus</button>
+          <button id="reset-focus-btn" type="button" class="secondary-focus-btn">🔄 Reset</button>
+          <button id="skip-focus-btn" type="button" class="secondary-focus-btn">⏭️ Next Cycle</button>
+        </div>
+
+        <!-- Session Counter -->
+        <div class="session-counter-row">
+          <span class="session-label">Completed Cycles Today:</span>
+          <div id="session-dots" class="session-dots">
+            <span class="dot-completed">🍅</span>
+            <span class="dot-completed">🍅</span>
+            <span class="dot-empty">⭕</span>
+            <span class="dot-empty">⭕</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN: AMBIENT SOUND MIXER -->
+      <div class="sound-card card">
+        <div class="sound-header">
+          <h3>🎧 Procedural Ambient Sounds</h3>
+          <span class="sound-sub">Synthesized in real-time via Web Audio</span>
+        </div>
+
+        <div class="sound-channels-grid">
+          <!-- RAIN SOUND -->
+          <div class="sound-channel" data-sound="rain">
+            <div class="channel-info">
+              <span class="sound-icon">🌧️</span>
+              <div class="sound-text">
+                <strong>Gentle Rain</strong>
+                <small>Calming pink-noise filter</small>
+              </div>
+            </div>
+            <button type="button" class="sound-toggle-btn" onclick="toggleSound('rain')">Play</button>
+          </div>
+
+          <!-- BINAURAL FOCUS 40Hz -->
+          <div class="sound-channel" data-sound="binaural">
+            <div class="channel-info">
+              <span class="sound-icon">🧠</span>
+              <div class="sound-text">
+                <strong>40Hz Binaural Waves</strong>
+                <small>Gamma-wave focus frequency</small>
+              </div>
+            </div>
+            <button type="button" class="sound-toggle-btn" onclick="toggleSound('binaural')">Play</button>
+          </div>
+
+          <!-- WHITE NOISE -->
+          <div class="sound-channel" data-sound="white">
+            <div class="channel-info">
+              <span class="sound-icon">🌫️</span>
+              <div class="sound-text">
+                <strong>Brown Noise</strong>
+                <small>Deep ambient mask</small>
+              </div>
+            </div>
+            <button type="button" class="sound-toggle-btn" onclick="toggleSound('white')">Play</button>
+          </div>
+
+          <!-- CAFE AMBIENCE -->
+          <div class="sound-channel" data-sound="cafe">
+            <div class="channel-info">
+              <span class="sound-icon">☕</span>
+              <div class="sound-text">
+                <strong>Coffee Shop Resonance</strong>
+                <small>Warm acoustic backdrop</small>
+              </div>
+            </div>
+            <button type="button" class="sound-toggle-btn" onclick="toggleSound('cafe')">Play</button>
+          </div>
+        </div>
+
+        <div class="master-volume-box">
+          <label for="master-volume">Master Volume</label>
+          <input id="master-volume" type="range" min="0" max="1" step="0.05" value="0.5" />
+        </div>
+      </div>
+    </div>
+
+    <!-- QUICK FOCUS GOALS / SCRATCHPAD -->
+    <div class="scratchpad-box card">
+      <div class="scratchpad-header">
+        <h3>📋 Current Session Goals & Micro-Checklist</h3>
+        <span class="scratchpad-hint">Persists locally across sessions</span>
+      </div>
+      <div class="scratchpad-input-row">
+        <input id="new-goal-input" type="text" placeholder="Add a specific focus goal for this session (e.g. Read Chapter 4, Solve 5 problems)" />
+        <button id="add-goal-btn" type="button" class="mini-tool-btn">+ Add Goal</button>
+      </div>
+      <ul id="goals-list" class="goals-list"></ul>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 AI StudyFlow Academic Suite | Deep Work & Flow Optimization</p>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="../Javascript/app.js"></script>
+  <script src="../Javascript/focus.js"></script>
+  <script src="../Javascript/moodnavbar.js"></script>
+  <script src="../Javascript/global.js"></script>
+</body>
+</html>

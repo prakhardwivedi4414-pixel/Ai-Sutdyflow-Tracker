@@ -3,126 +3,190 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AI StudyFlow</title>
-    <link rel="stylesheet" href="/AI-StudyFlow/Code/Design/base.css" />
-    <link rel="stylesheet" href="/AI-StudyFlow/Code/Design/styles.css" />
+    <title>AI StudyFlow — All-in-One Academic Suite</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../Design/base.css" />
+    <link rel="stylesheet" href="../Design/styles.css" />
   </head>
 
   <body>
-    <!-- FLUID NAVBAR -->
+    <!-- UNIFIED NAVBAR -->
     <nav class="fluid-navbar">
       <div class="nav-left">
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/906/906361.png"
-          alt="no found"
-          class="logo-icon"
-        />
+        <span class="logo-badge">⚡</span>
         <h2 class="logo-text">AI StudyFlow</h2>
       </div>
 
       <ul class="nav-links">
-        <li><a href="#" class="active">Home</a></li>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#why">Why Us</a></li>
-        <li><a href="#upcoming">Upcoming</a></li>
+        <li><a href="index.html" class="active">Dashboard</a></li>
+        <li><a href="planner.html">Planner</a></li>
+        <li><a href="explainer.html">Notes & Cornell</a></li>
+        <li><a href="flashcards.html">Flashcards</a></li>
+        <li><a href="quiz.html">Mock Exam</a></li>
+        <li><a href="focus.html">Focus Hub</a></li>
       </ul>
 
-      <button class="nav-btn fancy-btn">Start Now</button>
+      <div class="nav-right-group">
+        <span id="streak-pill" class="streak-pill">🔥 1 Day Streak</span>
+        <button class="nav-btn fancy-btn" onclick="location.href='planner.html'">Launch Suite 🚀</button>
+      </div>
     </nav>
 
-    <!-- HERO -->
+    <!-- DASHBOARD HERO -->
     <header class="hero">
       <div class="hero-container">
         <div class="hero-text">
-          <h1>Learn Smarter. Not Harder.</h1>
+          <div class="hero-pill">✨ Powered by Google Gemini AI Engine</div>
+          <h1>Accelerate Your Learning. <br/><span class="gradient-text">Master Any Subject.</span></h1>
           <p>
-            Your AI-powered study companion to plan better, understand faster,
-            and stay motivated effortlessly.
+            An elite academic workspace engineered for high-performance students. Generate custom 14-day study roadmaps, convert notes to Cornell format, drill interactive flashcard decks, and test yourself with AI mock exams.
           </p>
-          <button class="primary-btn">Launch App</button>
+
+          <div class="hero-cta-group">
+            <button class="primary-btn" type="button" onclick="location.href='planner.html'">📅 Open Study Planner</button>
+            <button class="secondary-btn" type="button" onclick="location.href='flashcards.html'">🗂️ Practice Flashcards</button>
+          </div>
         </div>
 
-        <img
-          src="https://cdni.iconscout.com/illustration/premium/thumb/student-learning-online-3454660-2918394.png"
-          alt="no found"
-          class="hero-img"
-        />
+        <!-- HERO QUICK STATS / METRIC CARD -->
+        <div class="hero-visual">
+          <div class="hero-card-floating">
+            <div class="dash-stat-header">
+              <span class="stat-badge">⚡ Live Academic Hub</span>
+              <span class="live-pulse"></span>
+            </div>
+
+            <div class="dash-metrics-grid">
+              <div class="metric-block">
+                <span class="metric-num">14d</span>
+                <span class="metric-label">Smart Pacing Plan</span>
+              </div>
+              <div class="metric-block">
+                <span class="metric-num">Anki</span>
+                <span class="metric-label">SRS Deck Export</span>
+              </div>
+            </div>
+
+            <div class="floating-quick-links">
+              <a href="explainer.html" class="quick-link-row">
+                <span class="ql-icon">📝</span>
+                <span class="ql-text">Cornell Notes & Cheat Sheet</span>
+                <span class="ql-arrow">→</span>
+              </a>
+              <a href="quiz.html" class="quick-link-row">
+                <span class="ql-icon">📝</span>
+                <span class="ql-text">AI Timed Mock Exams</span>
+                <span class="ql-arrow">→</span>
+              </a>
+              <a href="focus.html" class="quick-link-row">
+                <span class="ql-icon">🎧</span>
+                <span class="ql-text">Focus Timer & Binaural Rain</span>
+                <span class="ql-arrow">→</span>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </header>
 
-    <!-- FEATURES -->
-    <section class="features" id="features">
-      <h2 class="section-title">Core Features</h2>
+    <!-- CORE ACADEMIC MODULES -->
+    <section class="features" id="modules">
+      <div class="section-header">
+        <h2 class="section-title">Essential Academic Tools</h2>
+        <p class="section-subtitle">Five specialized modules built around cognitive active recall principles</p>
+      </div>
+
       <div class="feature-grid">
-        <a href="/AI-StudyFlow/Code/Html/planner.html">
-          <div class="card">
-            <div class="icon-box blue">📘</div>
-            <h3>Study Planner</h3>
-            <p>Create personalized AI-based study schedules.</p>
+        <!-- 1. STUDY PLANNER -->
+        <a href="planner.html" class="card-link">
+          <div class="card module-card">
+            <div class="icon-box blue">📅</div>
+            <h3>14-Day Study Planner</h3>
+            <p>Input your courses and deadlines to synthesize an optimal 14-day study roadmap with active recall milestones and PDF/DOC export.</p>
+            <span class="card-action">Launch Planner →</span>
           </div>
         </a>
-        <a href="/AI-StudyFlow/Code/Html/explainer.html">
-          <div class="card">
+
+        <!-- 2. NOTE EXPLAINER & CORNELL -->
+        <a href="explainer.html" class="card-link">
+          <div class="card module-card">
             <div class="icon-box purple">🧠</div>
-            <h3>Note Explainer</h3>
-            <p>Paste your notes and get simplified explanations.</p>
+            <h3>Notes & Cornell Synthesizer</h3>
+            <p>Transform raw notes, lecture transcripts, and textbook chapters into standard Cornell Notes, 1-page cheat sheets, and step-by-step problem solvers.</p>
+            <span class="card-action">Synthesize Notes →</span>
           </div>
         </a>
-        <a href="/AI-StudyFlow/Code/Html/mood.html">
-          <div class="card">
-            <div class="icon-box pink">🙂</div>
-            <h3>Mood Coach</h3>
-            <p>Get motivation based on your mood.</p>
+
+        <!-- 3. FLASHCARDS -->
+        <a href="flashcards.html" class="card-link">
+          <div class="card module-card">
+            <div class="icon-box orange">🗂️</div>
+            <h3>Interactive Flashcards & SRS</h3>
+            <p>Generate 3D flip card decks with Spaced Repetition (Again/Hard/Good/Easy), mastery tracking, and 1-click Anki CSV export.</p>
+            <span class="card-action">Drill Flashcards →</span>
+          </div>
+        </a>
+
+        <!-- 4. MOCK EXAM -->
+        <a href="quiz.html" class="card-link">
+          <div class="card module-card">
+            <div class="icon-box green">📝</div>
+            <h3>AI Mock Exam Generator</h3>
+            <p>Simulate real exam conditions with timed multiple choice questions, instant automated grading, and comprehensive concept breakdowns.</p>
+            <span class="card-action">Take Mock Exam →</span>
+          </div>
+        </a>
+
+        <!-- 5. FOCUS HUB -->
+        <a href="focus.html" class="card-link">
+          <div class="card module-card">
+            <div class="icon-box cyan">🎧</div>
+            <h3>Focus Hub & Ambient Sounds</h3>
+            <p>Deep work Pomodoro timer integrated with an offline procedural sound synthesizer (40Hz Binaural Beats, Gentle Rain, Brown Noise).</p>
+            <span class="card-action">Enter Focus State →</span>
           </div>
         </a>
       </div>
     </section>
 
-    <!-- WHY -->
-    <section id="why" class="why">
-      <h2 class="section-title">Why Students Love StudyFlow?</h2>
+    <!-- SCIENTIFIC METHODOLOGY -->
+    <section id="methodology" class="why">
+      <div class="section-header">
+        <h2 class="section-title">Cognitive Science-Backed Learning</h2>
+        <p class="section-subtitle">Engineered around the most effective academic methodologies</p>
+      </div>
 
       <div class="why-grid">
         <div class="why-card">
-          ⚡
-          <h4>Save Time</h4>
-          <p>AI generates your entire study plan instantly.</p>
+          <div class="why-icon">⚡</div>
+          <h4>Active Recall</h4>
+          <p>Testing your memory retrieval with flashcards and mock exams consolidates neural pathways 300% faster than passive re-reading.</p>
         </div>
 
         <div class="why-card">
-          📚
-          <h4>Understand Faster</h4>
-          <p>Complex topics explained using simple language.</p>
+          <div class="why-icon">📈</div>
+          <h4>Spaced Repetition</h4>
+          <p>Strategically reviewing material at expanding intervals overcomes the Ebbinghaus forgetting curve for lifelong retention.</p>
         </div>
 
         <div class="why-card">
-          ❤️
-          <h4>Boost Motivation</h4>
-          <p>AI guidance based on your emotional state.</p>
+          <div class="why-icon">🔬</div>
+          <h4>Feynman Technique</h4>
+          <p>Simplifying complex ideas into plain language reveals hidden knowledge gaps before they appear on high-stakes exams.</p>
         </div>
       </div>
-    </section>
-
-    <!-- UPCOMING -->
-    <section class="upcoming" id="upcoming">
-      <h2 class="section-title">Upcoming Features</h2>
-
-      <ul class="upcoming-list">
-        <li>⚙️ AI Flashcards Generator</li>
-        <li>📊 Study Analytics Dashboard</li>
-        <li>🎧 Focus Mode With Music</li>
-        <li>🔔 Daily AI Tips</li>
-        <li>📱 Android/iOS App</li>
-      </ul>
     </section>
 
     <!-- FOOTER -->
     <footer class="footer">
-      <p>© 2025 AI StudyFlow | Built with ❤️ for students</p>
+      <p>© 2026 AI StudyFlow Academic Suite | Built for High-Performance Learners</p>
     </footer>
 
-    <!-- FLUID NAVBAR JS -->
-    <script src="/AI-StudyFlow/Code/Javascript/script.js"></script>
-    <script src="/AI-StudyFlow/Code/Javascript/global.js"></script>
+    <!-- SCRIPTS -->
+    <script src="../Javascript/app.js"></script>
+    <script src="../Javascript/script.js"></script>
+    <script src="../Javascript/global.js"></script>
   </body>
 </html>

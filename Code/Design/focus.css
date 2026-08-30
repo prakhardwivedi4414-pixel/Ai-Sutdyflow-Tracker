@@ -1,0 +1,350 @@
+/* AI StudyFlow - Focus Hub Styles (focus.css) */
+
+.focus-wrapper {
+  max-width: 1040px;
+  margin: 40px auto 80px;
+  padding: 0 20px;
+}
+
+.focus-layout-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 28px;
+  margin-bottom: 32px;
+}
+
+/* LEFT COLUMN: FOCUS CARD */
+.focus-card {
+  background: white;
+  padding: 36px 30px;
+  border-radius: 24px;
+  border: 1px solid var(--border-glass);
+  box-shadow: 0 12px 35px rgba(2, 132, 199, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.timer-mode-selector {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.mode-pill {
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1.5px solid #e2e8f0;
+  background: #f8fafc;
+  color: var(--text-dark);
+  font-size: 13px;
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+
+.mode-pill:hover {
+  border-color: var(--primary);
+  background: #f0f9ff;
+}
+
+.mode-pill.active {
+  border-color: var(--primary) !important;
+  background: #e0f2fe !important;
+  color: var(--primary-dark) !important;
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.15);
+}
+
+.timer-display-stage {
+  margin: 10px 0 28px;
+  width: 100%;
+}
+
+.timer-state-tag {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: var(--primary);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.digital-clock {
+  font-size: 72px;
+  font-weight: 800;
+  font-family: 'Outfit', monospace;
+  color: var(--text-dark);
+  letter-spacing: -1px;
+  line-height: 1;
+  margin-bottom: 18px;
+}
+
+.timer-actions {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.primary-focus-btn {
+  padding: 14px 32px;
+  border-radius: 14px;
+  border: none;
+  background: linear-gradient(135deg, #0284c7, #0ea5e9);
+  color: white;
+  font-weight: 800;
+  font-size: 16px;
+  box-shadow: 0 6px 20px rgba(2, 132, 199, 0.3);
+  transition: all 0.2s ease;
+}
+
+.primary-focus-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(2, 132, 199, 0.4);
+}
+
+.secondary-focus-btn {
+  padding: 14px 20px;
+  border-radius: 14px;
+  border: 1px solid #cbd5e1;
+  background: #f8fafc;
+  color: var(--text-dark);
+  font-weight: 700;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.secondary-focus-btn:hover {
+  background: #e2e8f0;
+  color: var(--text-dark);
+}
+
+.session-counter-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+  padding-top: 18px;
+  border-top: 1px solid #f1f5f9;
+  width: 100%;
+  justify-content: center;
+}
+
+.session-dots {
+  display: flex;
+  gap: 6px;
+  font-size: 16px;
+}
+
+/* RIGHT COLUMN: SOUND MIXER */
+.sound-card {
+  background: white;
+  padding: 32px;
+  border-radius: 24px;
+  border: 1px solid var(--border-glass);
+  box-shadow: 0 12px 35px rgba(2, 132, 199, 0.08);
+  display: flex;
+  flex-direction: column;
+}
+
+.sound-header {
+  margin-bottom: 20px;
+}
+
+.sound-header h3 {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 4px;
+}
+
+.sound-sub {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.sound-channels-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+
+.sound-channel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 18px;
+  border-radius: 16px;
+  background: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+  transition: all 0.2s ease;
+}
+
+.sound-channel:hover {
+  border-color: #cbd5e1;
+  background: white;
+}
+
+.sound-channel.sound-active {
+  border-color: #38bdf8 !important;
+  background: #f0f9ff !important;
+  box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.15);
+}
+
+.channel-info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.sound-icon {
+  font-size: 26px;
+}
+
+.sound-text strong {
+  display: block;
+  font-size: 15px;
+  color: var(--text-dark);
+}
+
+.sound-text small {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.sound-toggle-btn {
+  padding: 8px 18px;
+  border-radius: 10px;
+  border: 1px solid #cbd5e1;
+  background: white;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-dark);
+  transition: all 0.2s ease;
+}
+
+.sound-toggle-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.sound-active .sound-toggle-btn {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+.master-volume-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 18px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.master-volume-box label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.master-volume-box input[type="range"] {
+  width: 100%;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+
+/* SCRATCHPAD */
+.scratchpad-box {
+  background: white;
+  padding: 30px;
+  border-radius: 24px;
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-subtle);
+}
+
+.scratchpad-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.scratchpad-header h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.scratchpad-hint {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.scratchpad-input-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.scratchpad-input-row input {
+  flex: 1;
+}
+
+.goals-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.goal-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s ease;
+}
+
+.goal-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-dark);
+  cursor: pointer;
+}
+
+.goal-done span {
+  text-decoration: line-through;
+  color: #94a3b8;
+}
+
+.empty-goals-notice {
+  padding: 16px;
+  text-align: center;
+  font-size: 14px;
+  font-style: italic;
+  color: var(--text-muted);
+  background: #f8fafc;
+  border-radius: 12px;
+}
+
+@media (max-width: 820px) {
+  .focus-layout-grid {
+    grid-template-columns: 1fr;
+  }
+}

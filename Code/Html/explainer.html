@@ -3,72 +3,115 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Explainer — StudyFlow</title>
-
-  <link rel="stylesheet" href="/AI-StudyFlow/Code/Design/base.css">
-  <link rel="stylesheet" href="/AI-StudyFlow/Code/Design/explainer.css">
+  <title>AI Notes & Cornell Summarizer — StudyFlow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../Design/base.css">
+  <link rel="stylesheet" href="../Design/explainer.css">
 </head>
 
 <body>
-
-  <!-- NAVBAR -->
+  <!-- UNIFIED NAVBAR -->
   <nav class="fluid-navbar">
     <div class="nav-left">
-      <img src="https://cdn-icons-png.flaticon.com/512/906/906361.png" alt="not found" class="logo-icon">
+      <span class="logo-badge">⚡</span>
       <h2 class="logo-text">AI StudyFlow</h2>
     </div>
 
     <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html">Dashboard</a></li>
       <li><a href="planner.html">Planner</a></li>
-      <li><a href="explainer.html" class="active">Explainer</a></li>
-      <li><a href="mood.html">Mood Coach</a></li>
+      <li><a href="explainer.html" class="active">Notes & Cornell</a></li>
+      <li><a href="flashcards.html">Flashcards</a></li>
+      <li><a href="quiz.html">Mock Exam</a></li>
+      <li><a href="focus.html">Focus Hub</a></li>
     </ul>
 
-    <button class="nav-btn fancy-btn">Start</button>
+    <div class="nav-right-group">
+      <span id="streak-pill" class="streak-pill">🔥 1 Day Streak</span>
+      <button class="nav-btn fancy-btn" onclick="location.href='flashcards.html'">Flashcards 🗂️</button>
+    </div>
   </nav>
 
   <!-- CONTENT -->
   <main class="explainer-wrapper">
-
-    <h1 class="exp-title">AI Note Explainer</h1>
-    <p class="exp-subtitle">Paste your notes or upload a file — AI will simplify, explain, and highlight key concepts.</p>
+    <div class="header-section">
+      <div class="header-badge">🧠 Deep Academic Synthesis</div>
+      <h1 class="exp-title">AI Notes & Cornell Summarizer</h1>
+      <p class="exp-subtitle">Transform messy lecture notes, PDFs, or textbook chapters into structured Cornell Notes, formula cheat sheets, step-by-step problem solvers, and intuitive breakdowns.</p>
+    </div>
 
     <!-- Input Section -->
     <div class="input-card card">
-      <textarea id="note-input" placeholder="Paste your notes here..."></textarea>
+      <div class="input-card-header">
+        <label class="input-label" for="note-input">Your Notes / Content</label>
+        <div class="input-actions-top">
+          <label class="file-upload-btn" title="Upload a text or markdown file">
+            📁 Upload Notes (.txt, .md)
+            <input type="file" id="file-upload" accept=".txt,.md,.json,.text" style="display: none;" />
+          </label>
+          <button id="clear-input-btn" class="clear-btn" type="button" title="Clear text">Clear</button>
+        </div>
+      </div>
 
+      <textarea id="note-input" placeholder="Paste your lecture notes, textbook excerpt, equations, or scientific problem statement here..."></textarea>
+
+      <!-- Quick Preset Notes -->
+      <div class="preset-topics" style="margin-top: 14px; margin-bottom: 16px;">
+        <span class="preset-label">Sample Notes:</span>
+        <button type="button" class="preset-btn" onclick="setNotePreset('physics')">⚡ Maxwell Equations & Electromagnetism</button>
+        <button type="button" class="preset-btn" onclick="setNotePreset('biology')">🧬 DNA Replication & Polymerase Enzymes</button>
+        <button type="button" class="preset-btn" onclick="setNotePreset('cs')">💻 Dynamic Programming & Memoization</button>
+      </div>
+
+      <!-- ACADEMIC MODES GRID -->
       <div class="action-grid">
-        <button class="action-btn" onclick="runExplain('explain')">Explain</button>
-        <button class="action-btn" onclick="runExplain('simplify')">Simplify</button>
-        <button class="action-btn" onclick="runExplain('summarize')">Summarize</button>
-        <button class="action-btn" onclick="runExplain('questions')">Ask Questions</button>
-        <button class="action-btn" onclick="runExplain('examples')">Give Examples</button>
+        <button class="action-btn" type="button" onclick="runExplain('cornell')">📝 Cornell Notes</button>
+        <button class="action-btn" type="button" onclick="runExplain('cheatsheet')">⚡ 1-Page Cheat Sheet</button>
+        <button class="action-btn" type="button" onclick="runExplain('solve')">🔬 Step-by-Step Solver</button>
+        <button class="action-btn" type="button" onclick="runExplain('simplify')">💡 Simplify (ELI5)</button>
+        <button class="action-btn" type="button" onclick="runExplain('summarize')">📋 Executive Summary</button>
+        <button class="action-btn" type="button" onclick="runExplain('questions')">❓ Exam Practice Questions</button>
       </div>
     </div>
 
-    <!-- Output -->
-    <div id="output-card" class="output-card card">
-      Your AI output will appear here...
+    <!-- Output Section -->
+    <div class="output-section">
+      <div class="output-header">
+        <h2>Formatted Academic Output</h2>
+        <div class="output-actions-bar">
+          <button id="copy-output-btn" class="action-mini-btn" type="button" style="display: none;">📋 Copy Markdown</button>
+          <button id="export-notes-doc-btn" class="action-mini-btn" type="button" style="display: none;">📝 Export DOC</button>
+        </div>
+      </div>
+
+      <div id="output-card" class="output-card card">
+        <div class="placeholder-state">
+          <div class="placeholder-icon">💡</div>
+          <p>Select an academic synthesis format above (e.g. Cornell Notes, Cheat Sheet, or Step-by-Step Solver) to generate structured output.</p>
+        </div>
+      </div>
     </div>
 
     <!-- History -->
     <div class="history-card card">
-      <h3>Previous Explanations</h3>
+      <div class="history-header">
+        <h3>🕒 Previous Syntheses</h3>
+        <span class="history-hint">Click any entry to reload</span>
+      </div>
       <div id="history-list" class="history-list">None yet.</div>
     </div>
-
-    <!-- Explainer Aura -->
-    <div id="exp-aura" class="exp-aura"></div>
-
   </main>
 
-  <footer class="footer">© 2025 AI StudyFlow</footer>
+  <footer class="footer">
+    <p>© 2026 AI StudyFlow Academic Suite | High-Yield Note Synthesis</p>
+  </footer>
 
-  <script src="/AI-StudyFlow/Code/Javascript/moodnavbar.js"></script>
-  <script src="/AI-StudyFlow/Code/Javascript/app.js"></script>
-  <script src="/AI-StudyFlow/Code/Javascript/Explainer.js"></script>
-
-  
+  <!-- SCRIPTS -->
+  <script src="../Javascript/app.js"></script>
+  <script src="../Javascript/Explainer.js"></script>
+  <script src="../Javascript/moodnavbar.js"></script>
+  <script src="../Javascript/global.js"></script>
 </body>
 </html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Mock Exam & Quiz Generator — StudyFlow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../Design/base.css">
+  <link rel="stylesheet" href="../Design/quiz.css">
+</head>
+
+<body>
+  <!-- UNIFIED NAVBAR -->
+  <nav class="fluid-navbar">
+    <div class="nav-left">
+      <span class="logo-badge">⚡</span>
+      <h2 class="logo-text">AI StudyFlow</h2>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Dashboard</a></li>
+      <li><a href="planner.html">Planner</a></li>
+      <li><a href="explainer.html">Notes & Cornell</a></li>
+      <li><a href="flashcards.html">Flashcards</a></li>
+      <li><a href="quiz.html" class="active">Mock Exam</a></li>
+      <li><a href="focus.html">Focus Hub</a></li>
+    </ul>
+
+    <div class="nav-right-group">
+      <span id="streak-pill" class="streak-pill">🔥 1 Day Streak</span>
+      <button class="nav-btn fancy-btn" onclick="location.href='flashcards.html'">Flashcards 🗂️</button>
+    </div>
+  </nav>
+
+  <!-- CONTENT -->
+  <main class="quiz-wrapper">
+    <div class="header-section">
+      <div class="header-badge">📝 Exam Simulation Engine</div>
+      <h1 class="page-title">AI Mock Exam & Assessment</h1>
+      <p class="page-subtitle">Test your retention with challenging, university-grade multiple choice exams complete with instant scoring and detailed answer explanations.</p>
+    </div>
+
+    <!-- GENERATOR CARD -->
+    <div id="quiz-setup-card" class="generator-box card">
+      <div class="form-row-full">
+        <div class="input-field-group">
+          <label for="quiz-topic">Subject or Exam Syllabus</label>
+          <input id="quiz-topic" type="text" placeholder="e.g. Operating Systems & Concurrency, Organic Chemistry, Linear Algebra" />
+        </div>
+      </div>
+
+      <div class="form-row-split">
+        <div class="input-field-group">
+          <label for="quiz-difficulty">Difficulty Level</label>
+          <select id="quiz-difficulty">
+            <option value="Standard / High School">Standard / High School</option>
+            <option value="AP / College Level" selected>AP / College Level</option>
+            <option value="University / Graduate">University / Graduate</option>
+          </select>
+        </div>
+
+        <div class="input-field-group">
+          <label for="quiz-count">Question Count</label>
+          <select id="quiz-count">
+            <option value="5" selected>5 Quick Check (10 Mins)</option>
+            <option value="8">8 Standard Exam (16 Mins)</option>
+            <option value="10">10 Full Mock (20 Mins)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Quick Preset Topics -->
+      <div class="preset-topics">
+        <span class="preset-label">Sample Exams:</span>
+        <button type="button" class="preset-btn" onclick="setQuizPreset('Computer Science: Operating Systems & Virtual Memory')">💻 Operating Systems</button>
+        <button type="button" class="preset-btn" onclick="setQuizPreset('Physics: Quantum Mechanics & Wave-Particle Duality')">⚛️ Quantum Physics</button>
+        <button type="button" class="preset-btn" onclick="setQuizPreset('Biology: Molecular Genetics & CRISPR')">🧬 Genetics</button>
+        <button type="button" class="preset-btn" onclick="setQuizPreset('Mathematics: Linear Algebra & Eigenvalues')">🔢 Linear Algebra</button>
+      </div>
+
+      <div class="optional-notes-toggle">
+        <button type="button" id="toggle-quiz-notes" class="text-link-btn">+ Paste Custom Syllabus / Lecture Notes (Optional)</button>
+        <textarea id="quiz-custom-notes" style="display: none;" placeholder="Paste textbook excerpts or lecture notes here to generate a tailored exam..."></textarea>
+      </div>
+
+      <button id="start-exam-btn" type="button" class="primary-action-btn">🚀 Generate & Start Mock Exam</button>
+    </div>
+
+    <!-- EXAM RUNNER AREA (Hidden Initially) -->
+    <div id="exam-runner" class="exam-runner-box card" style="display: none;">
+      <!-- Exam Header / Status -->
+      <div class="exam-top-bar">
+        <div class="exam-info">
+          <h2 id="exam-title-display">Mock Exam</h2>
+          <span id="exam-diff-badge" class="diff-pill">AP / College</span>
+        </div>
+        <div class="exam-timer-box">
+          <span class="timer-icon">⏱️</span>
+          <span id="exam-timer">10:00</span>
+        </div>
+      </div>
+
+      <!-- Question Navigator Chips -->
+      <div id="question-nav-chips" class="q-nav-chips"></div>
+
+      <!-- Active Question Box -->
+      <div class="question-container">
+        <div class="q-header">
+          <span id="q-number-badge" class="q-badge">Question 1</span>
+        </div>
+        <h3 id="q-text" class="q-statement">Question statement will appear here?</h3>
+
+        <!-- Option Buttons (A, B, C, D) -->
+        <div id="options-grid" class="options-grid"></div>
+
+        <!-- Hint Accordion -->
+        <div class="hint-accordion">
+          <button type="button" id="hint-toggle-btn" class="hint-btn">💡 Need a Hint?</button>
+          <p id="hint-text" class="hint-content" style="display: none;"></p>
+        </div>
+      </div>
+
+      <!-- Exam Bottom Navigation -->
+      <div class="exam-bottom-bar">
+        <button id="prev-q-btn" type="button" class="nav-arrow-btn">← Previous</button>
+        <button id="next-q-btn" type="button" class="nav-arrow-btn">Next →</button>
+        <button id="submit-exam-btn" type="button" class="submit-exam-btn">🏁 Submit Exam</button>
+      </div>
+    </div>
+
+    <!-- EXAM RESULTS & REVIEW (Hidden Initially) -->
+    <div id="exam-results" class="results-container card" style="display: none;">
+      <div class="results-header">
+        <div id="score-badge-circle" class="score-circle">
+          <span id="score-pct-text">80%</span>
+          <small id="score-fraction-text">4/5</small>
+        </div>
+        <div class="score-summary-text">
+          <h2 id="score-verdict">Outstanding Mastery!</h2>
+          <p id="score-feedback">You demonstrated excellent conceptual understanding and analytical precision.</p>
+          <div class="results-actions">
+            <button id="retake-quiz-btn" type="button" class="action-mini-btn">🔄 Retake This Exam</button>
+            <button id="new-quiz-btn" type="button" class="action-mini-btn primary-mini">➕ New Subject</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Detailed Question Breakdown -->
+      <div class="review-section">
+        <h3>📋 Detailed Question Review & Concept Explanations</h3>
+        <div id="review-list" class="review-list"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 AI StudyFlow Academic Suite | Rigorous Mock Assessments</p>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="../Javascript/app.js"></script>
+  <script src="../Javascript/quiz.js"></script>
+  <script src="../Javascript/moodnavbar.js"></script>
+  <script src="../Javascript/global.js"></script>
+</body>
+</html>

@@ -3,215 +3,121 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AI Study Planner</title>
-    <link rel="stylesheet" href="/AI-StudyFlow/Code/Design/planner.css" />
-
-    <style>
-      /* Extra page-level styling to make planner look premium */
-
-      .planner-header {
-        text-align: center;
-        margin-bottom: 2rem;
-      }
-
-      .planner-header h1 {
-        font-size: 2.5rem;
-        font-weight: 700;
-        color: #1f2937;
-      }
-
-      .planner-header p {
-        color: #4b5563;
-        margin-top: 0.3rem;
-      }
-
-      .planner-box {
-        background: white;
-        padding: 2rem;
-        border-radius: 16px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        max-width: 700px;
-        margin: auto;
-      }
-
-      .form-group {
-        margin-bottom: 1.4rem;
-      }
-
-      .form-group label {
-        font-weight: 600;
-        color: #374151;
-        display: block;
-        margin-bottom: 0.4rem;
-      }
-
-      .form-group input {
-        padding: 0.9rem;
-        width: 100%;
-        border-radius: 10px;
-        border: 1px solid #d1d5db;
-        font-size: 1rem;
-      }
-
-      .generate-btn {
-        display: inline-block;
-        width: 100%;
-        padding: 1rem;
-        background: #2563eb;
-        color: white;
-        border-radius: 12px;
-        font-size: 1.2rem;
-        font-weight: 600;
-        cursor: pointer;
-        border: none;
-        margin-top: 0.5rem;
-        transition: 0.2s;
-      }
-
-      .generate-btn:hover {
-        background: #1e4fcc;
-      }
-
-      .output-section {
-        margin-top: 2rem;
-      }
-
-      #plan-output {
-        white-space: pre-wrap;
-        background: #ffffff;
-        padding: 1.5rem;
-        border-radius: 16px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        min-height: 150px;
-        border-left: 5px solid #2563eb;
-      }
-    </style>
+    <title>AI Study Planner — StudyFlow</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../Design/base.css" />
+    <link rel="stylesheet" href="../Design/planner.css" />
   </head>
   <body>
-    <!-- ======================= NEW PREMIUM NAVBAR ======================= -->
-    <nav class="nav">
-      <a href="index.html" class="nav-link">
-        <!-- HOME ICON -->
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="icon"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <path
-            d="M2.25 12l9.75-9 9.75 9M4.5 9.75v10.5a.75.75 0 0 0 .75.75H9.75v-6h4.5v6h4.5a.75.75 0 0 0 .75-.75V9.75"
-          />
-        </svg>
-        <span class="nav-text">Home</span>
-      </a>
+    <!-- UNIFIED NAVBAR -->
+    <nav class="fluid-navbar">
+      <div class="nav-left">
+        <span class="logo-badge">⚡</span>
+        <h2 class="logo-text">AI StudyFlow</h2>
+      </div>
 
-      <a href="planner.html" class="nav-link">
-        <!-- PLANNER ICON -->
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="icon"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <rect x="3" y="4" width="18" height="16" rx="2" />
-          <path d="M3 10h18M8 2v4M16 2v4" />
-        </svg>
-        <span class="nav-text">Planner</span>
-      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="planner.html" class="active">Planner</a></li>
+        <li><a href="explainer.html">Notes & Cornell</a></li>
+        <li><a href="flashcards.html">Flashcards</a></li>
+        <li><a href="quiz.html">Mock Exam</a></li>
+        <li><a href="focus.html">Focus Hub</a></li>
+      </ul>
 
-      <a href="explainer.html" class="nav-link">
-        <!-- EXPLAINER ICON -->
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="icon"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <path
-            d="M3 5a2 2 0 012-2h6a2 2 0 012 2v14a2 2 0 00-2-2H5a2 2 0 01-2-2V5z"
-          />
-          <path
-            d="M21 5a2 2 0 00-2-2h-6a2 2 0 00-2 2v14a2 2 00 012-2h6a2 2 00 012-2V5z"
-          />
-        </svg>
-        <span class="nav-text">Explainer</span>
-      </a>
-
-      <a href="mood.html" class="nav-link">
-        <!-- HAPPY MOOD ICON -->
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="icon"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <circle cx="12" cy="12" r="9" />
-          <path d="M9 10h.01M15 10h.01" />
-          <path d="M8 14s1.5 2 4 2 4-2 4-2" />
-        </svg>
-        <span class="nav-text">Mood</span>
-      </a>
+      <div class="nav-right-group">
+        <span id="streak-pill" class="streak-pill">🔥 1 Day Streak</span>
+        <button class="nav-btn fancy-btn" onclick="location.href='focus.html'">Focus Timer 🎧</button>
+      </div>
     </nav>
-
 
     <main class="container">
       <!-- Header Section -->
       <div class="planner-header">
-        <h1>Create Your Own Study Plan</h1>
-        <p>Create a smart, personalized 14-day study plan instantly.</p>
+        <div class="header-badge">📅 Automated Academic Scheduler</div>
+        <h1>14-Day AI Study Masterplan</h1>
+        <p>Input your courses, upcoming exam dates, and daily study capacity to synthesize an actionable 14-day study roadmap with active recall milestones.</p>
       </div>
 
       <!-- Planner Form Box -->
-      <div class="planner-box">
-        <!-- MULTIPLE SUBJECT + DEADLINE INPUT -->
-        <div class="form-group">
-          <label>Add Subject & Deadline</label>
+      <div class="planner-box card">
+        <div class="form-section-title">
+          <span>1</span> Add Subjects & Deadlines
+        </div>
 
+        <div class="form-group">
           <div class="deadline-row">
             <input
               id="subject-input"
-              placeholder="Enter Subject (e.g., Math)"
+              type="text"
+              placeholder="Enter Course or Subject (e.g. Data Structures, Calculus III, Organic Chemistry)"
             />
 
-            <input id="date-input" type="date" />
+            <input id="date-input" type="date" title="Target exam or completion date" />
           </div>
 
-          <button id="add-deadline-btn" class="add-btn">➕ Add Subject</button>
+          <button id="add-deadline-btn" class="add-btn" type="button">➕ Add Subject to Schedule</button>
         </div>
 
-        <h3>Subjects You Added</h3>
+        <!-- Quick Subject Presets -->
+        <div class="preset-topics" style="margin-bottom: 20px;">
+          <span class="preset-label">Quick Bundles:</span>
+          <button type="button" class="preset-btn" onclick="addPresetBundle('CS')">💻 CS Major Pack</button>
+          <button type="button" class="preset-btn" onclick="addPresetBundle('PreMed')">🧬 Pre-Med Pack</button>
+          <button type="button" class="preset-btn" onclick="addPresetBundle('Engineering')">⚙️ Engineering Pack</button>
+        </div>
+
+        <div class="form-section-title">
+          <span>2</span> Enrolled Subjects List
+        </div>
         <ul id="deadline-list" class="deadline-list"></ul>
 
-        <div class="form-group">
-          <label>Hours per day</label>
-          <input id="hours" type="number" value="3" />
+        <div class="form-section-title">
+          <span>3</span> Study Commitment
+        </div>
+        <div class="form-group hours-group">
+          <label for="hours">Target Daily Study Time</label>
+          <div class="hours-input-wrapper">
+            <input id="hours" type="number" min="1" max="16" value="4" />
+            <span class="hours-suffix">hours / day</span>
+          </div>
         </div>
 
-        <button id="gen-plan" class="generate-btn">🚀 Generate Plan</button>
+        <button id="gen-plan" class="generate-btn" type="button">🚀 Generate 14-Day AI Masterplan</button>
       </div>
 
       <!-- Output Section -->
       <div class="output-section">
-        <h2>Your Study Plan</h2>
-        <div id="plan-output"></div>
+        <div class="output-header">
+          <h2>Your 14-Day Study Roadmap</h2>
+          <!-- ACTION TOOLBAR -->
+          <div id="plan-actions" class="plan-actions-toolbar" style="display: none;">
+            <button id="copy-plan-btn" class="action-mini-btn" type="button">📋 Copy Plan</button>
+            <button id="download-btn" class="action-mini-btn" type="button">📄 Download PDF</button>
+            <button id="download-doc-btn" class="action-mini-btn" type="button">📝 Download DOC</button>
+          </div>
+        </div>
 
-        <!--   DOWNLOAD BUTTON  -->
-        <button id="download-btn" class="mini-btn" style="display: none">
-          ⬇️ Download
-        </button>
+        <div id="plan-output" class="output-box card">
+          <div class="placeholder-state">
+            <div class="placeholder-icon">📋</div>
+            <p>Your AI generated 14-day study plan with daily milestones, Pomodoro rhythms, and active recall checkpoints will appear here.</p>
+          </div>
+        </div>
       </div>
     </main>
 
+    <footer class="footer">
+      <p>© 2026 AI StudyFlow Academic Suite | Built for High-Performance Learners</p>
+    </footer>
+
+    <!-- SCRIPTS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script type="module" src="https://esm.run/@google/generative-ai"></script>
-    <script type="module" src="/AI-StudyFlow/Code/Javascript/planner.js"></script>
+    <script src="../Javascript/app.js"></script>
+    <script src="../Javascript/planner.js"></script>
+    <script src="../Javascript/moodnavbar.js"></script>
+    <script src="../Javascript/global.js"></script>
   </body>
 </html>

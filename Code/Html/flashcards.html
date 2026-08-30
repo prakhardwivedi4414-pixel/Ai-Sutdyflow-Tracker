@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Flashcards & Spaced Repetition — StudyFlow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../Design/base.css">
+  <link rel="stylesheet" href="../Design/flashcards.css">
+</head>
+
+<body>
+  <!-- UNIFIED NAVBAR -->
+  <nav class="fluid-navbar">
+    <div class="nav-left">
+      <span class="logo-badge">⚡</span>
+      <h2 class="logo-text">AI StudyFlow</h2>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Dashboard</a></li>
+      <li><a href="planner.html">Planner</a></li>
+      <li><a href="explainer.html">Notes & Cornell</a></li>
+      <li><a href="flashcards.html" class="active">Flashcards</a></li>
+      <li><a href="quiz.html">Mock Exam</a></li>
+      <li><a href="focus.html">Focus Hub</a></li>
+    </ul>
+
+    <div class="nav-right-group">
+      <span id="streak-pill" class="streak-pill">🔥 1 Day Streak</span>
+      <button class="nav-btn fancy-btn" onclick="location.href='quiz.html'">Take Quiz 📝</button>
+    </div>
+  </nav>
+
+  <!-- CONTENT -->
+  <main class="flashcards-wrapper">
+    <div class="header-section">
+      <div class="header-badge">🗂️ Spaced Repetition System</div>
+      <h1 class="page-title">AI Flashcards & Active Recall</h1>
+      <p class="page-subtitle">Generate high-yield flip card decks instantly from any subject, chapter, or custom notes.</p>
+    </div>
+
+    <!-- GENERATOR CARD -->
+    <div class="generator-box card">
+      <div class="form-row-full">
+        <div class="input-field-group">
+          <label for="deck-topic">Subject or Topic to Master</label>
+          <input id="deck-topic" type="text" placeholder="e.g. Data Structures & Binary Trees, Cellular Respiration, Organic Chemistry" />
+        </div>
+      </div>
+
+      <div class="form-row-split">
+        <div class="input-field-group">
+          <label for="card-count">Card Count</label>
+          <select id="card-count">
+            <option value="6">6 High-Yield Cards</option>
+            <option value="8" selected>8 Standard Deck</option>
+            <option value="12">12 Comprehensive Deck</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Quick Preset Topics -->
+      <div class="preset-topics">
+        <span class="preset-label">Quick Presets:</span>
+        <button type="button" class="preset-btn" onclick="setPreset('Data Structures & Tree Algorithms')">🌳 Data Structures</button>
+        <button type="button" class="preset-btn" onclick="setPreset('Cellular Respiration & ATP Synthesis')">🧬 Biology</button>
+        <button type="button" class="preset-btn" onclick="setPreset('Calculus Fundamental Theorems & Integrals')">📐 Calculus</button>
+        <button type="button" class="preset-btn" onclick="setPreset('Thermodynamics & Carnot Cycles')">🔥 Physics</button>
+      </div>
+
+      <div class="optional-notes-toggle">
+        <button type="button" id="toggle-notes-btn" class="text-link-btn">+ Paste Custom Lecture Notes / Excerpt (Optional)</button>
+        <textarea id="deck-notes" style="display: none;" placeholder="Paste raw notes here to generate flashcards specifically from your lecture materials..."></textarea>
+      </div>
+
+      <button id="generate-deck-btn" type="button" class="primary-action-btn">🚀 Generate Interactive Flashcard Deck</button>
+    </div>
+
+    <!-- FLASHCARD VIEWER AREA -->
+    <div id="deck-area" class="deck-display-area" style="display: none;">
+      <!-- Progress Bar & Deck Meta -->
+      <div class="deck-header-meta">
+        <div class="deck-title-row">
+          <h2 id="active-deck-title">Active Deck</h2>
+          <div class="deck-actions-top">
+            <button id="export-anki-btn" type="button" class="mini-tool-btn" title="Download for Anki SRS">💾 Export Anki (CSV)</button>
+            <button id="shuffle-deck-btn" type="button" class="mini-tool-btn" title="Shuffle Card Order">🔀 Shuffle</button>
+          </div>
+        </div>
+
+        <div class="progress-bar-container">
+          <div class="progress-labels">
+            <span id="card-counter-label">Card 1 of 8</span>
+            <span id="mastery-pct-label">0% Mastered</span>
+          </div>
+          <div class="progress-track">
+            <div id="deck-progress-bar" class="progress-fill" style="width: 0%;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3D FLIP CARD -->
+      <div class="flip-card-stage">
+        <div id="flashcard" class="flip-card">
+          <!-- FRONT -->
+          <div class="card-face card-front">
+            <div class="card-face-header">
+              <span id="card-tag-badge" class="card-tag">Concept</span>
+              <span class="flip-hint">Click to Flip ↷</span>
+            </div>
+            <div class="card-face-body">
+              <p id="card-front-text">Question prompt will appear here.</p>
+            </div>
+            <div class="card-face-footer">
+              <span class="tap-label">💡 Space / Tap to reveal answer</span>
+            </div>
+          </div>
+
+          <!-- BACK -->
+          <div class="card-face card-back">
+            <div class="card-face-header">
+              <span class="card-tag tag-answer">Answer</span>
+              <span class="flip-hint">Click to Flip ↶</span>
+            </div>
+            <div class="card-face-body">
+              <p id="card-back-text">Answer explanation will appear here.</p>
+            </div>
+            <div class="card-face-footer">
+              <span class="tap-label">Rate your recall below</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REPETITION RATING BUTTONS (SRS) -->
+      <div class="srs-rating-controls">
+        <button type="button" class="srs-btn srs-again" onclick="rateCard('again')" title="Review immediately">
+          <span class="srs-emoji">🔴</span>
+          <span class="srs-text">Again</span>
+          <small>Need practice</small>
+        </button>
+        <button type="button" class="srs-btn srs-hard" onclick="rateCard('hard')" title="Difficult recall">
+          <span class="srs-emoji">🟡</span>
+          <span class="srs-text">Hard</span>
+          <small>Barely knew</small>
+        </button>
+        <button type="button" class="srs-btn srs-good" onclick="rateCard('good')" title="Good recall">
+          <span class="srs-emoji">🟢</span>
+          <span class="srs-text">Good</span>
+          <small>Solid recall</small>
+        </button>
+        <button type="button" class="srs-btn srs-easy" onclick="rateCard('easy')" title="Mastered">
+          <span class="srs-emoji">🔵</span>
+          <span class="srs-text">Easy</span>
+          <small>Mastered!</small>
+        </button>
+      </div>
+
+      <!-- CARD NAVIGATION CONTROLS -->
+      <div class="card-nav-controls">
+        <button id="prev-card-btn" type="button" class="nav-arrow-btn">← Previous Card</button>
+        <button id="flip-card-btn" type="button" class="flip-toggle-btn">🔄 Flip Card</button>
+        <button id="next-card-btn" type="button" class="nav-arrow-btn">Next Card →</button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 AI StudyFlow Academic Suite | Engineered for Active Recall</p>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="../Javascript/app.js"></script>
+  <script src="../Javascript/flashcards.js"></script>
+  <script src="../Javascript/moodnavbar.js"></script>
+  <script src="../Javascript/global.js"></script>
+</body>
+</html>
